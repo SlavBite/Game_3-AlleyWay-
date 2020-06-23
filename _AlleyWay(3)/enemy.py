@@ -30,18 +30,17 @@ class Enemy_easy_nogune:
 		else:
 			win.blit(self.model,(self.x,self.y))
 	def touch_enemy(self):
-		if self.x < 1280:
-			if self.touch_count > 0:
-				if self.resistance_to_kick < self.touch_kick:
-					self.tmp = self.touch_kick - self.resistance_to_kick
-					self.x += self.tmp
-				else:
-					self.tmp = 1
-				self.touch_count -= 1
+		if self.touch_count > 0:
+			if self.resistance_to_kick < self.touch_kick:
+				self.tmp = self.touch_kick - self.resistance_to_kick
 			else:
-				self.touch_count = 15
-				self.touch = False	
-			win.blit(self.model,(self.x,self.y))
+				self.tmp = 1
+			self.x += self.tmp
+			self.touch_count -= 1
+		else:
+			self.touch_count = 15
+			self.touch = False	
+		win.blit(self.model,(self.x,self.y))
 	def health_bar_enemy(self):
 		pygame.draw.rect(win,(155,0,0),(self.x, self.y - 30 ,self.healt_bar, 20))
 		self.healt_bar = self.hp / self.healt_bar_persent
@@ -80,9 +79,9 @@ class Hero:
 		if self.touch_count > 0:
 			if self.resistance_to_kick < self.touch_kick:
 					self.tmp = self.touch_kick - self.resistance_to_kick
-					self.x += self.tmp
 			else:
-				self.tmp = self.touch_kick
+				self.tmp = 1
+			self.x -= self.tmp
 			self.touch_count -= 1
 		else:
 			self.touch_count = 15
