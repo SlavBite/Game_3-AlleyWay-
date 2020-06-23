@@ -33,13 +33,11 @@ class Enemy_easy_nogune:
 		if self.x < 1280:
 			if self.touch_count > 0:
 				if self.resistance_to_kick < self.touch_kick:
-					self.tmp = self.touch_kick
-					self.touch_kick -= self.resistance_to_kick
-					self.x += self.touch_kick
+					self.tmp = self.touch_kick - self.resistance_to_kick
+					self.x += self.tmp
 				else:
-					self.tmp = self.touch_kick
+					self.tmp = 1
 				self.touch_count -= 1
-				self.touch_kick = tmp
 			else:
 				self.touch_count = 15
 				self.touch = False	
