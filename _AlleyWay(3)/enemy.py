@@ -79,13 +79,11 @@ class Hero:
 		global touch_count, hero_x, touch
 		if self.touch_count > 0:
 			if self.resistance_to_kick < self.touch_kick:
-					self.tmp = self.touch_kick
-					self.touch_kick -= self.resistance_to_kick
-					self.x += self.touch_kick
+					self.tmp = self.touch_kick - self.resistance_to_kick
+					self.x += self.tmp
 			else:
 				self.tmp = self.touch_kick
 			self.touch_count -= 1
-			self.touch_kick = self.tmp
 		else:
 			self.touch_count = 15
 			self.touch = False
