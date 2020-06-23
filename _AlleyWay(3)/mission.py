@@ -1,5 +1,6 @@
 from enemy import *
 from inf import *
+from shop_in import *
 def back_or_fight():
 	global mission_key, wait, click_press
 	font = pygame.font.Font("D:\\JustMonika\\_RunFatCat(1)\\ara\\langue.ttf", 50)
